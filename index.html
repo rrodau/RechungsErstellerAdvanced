@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rechnungsersteller</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+    
+    <script src="./script.js"></script>
+
+</head>
+<body>
+    <div>
+      <a id="info-btn" href="./info.html">
+        <button>Details bearbeiten</button>
+      </a>
+      <h1 id="title">Rechnungersteller</h1>
+      <table id="table">
+          <tr>
+              <th>Pos</th>
+              <th>Beschreibung</th>
+              <th>Betrag</th>
+              <th class="no-border"></th>
+          </tr>
+      </table>
+    </div>
+    <br>
+    <hr>
+
+    <div class="inputs">
+      <textarea class="custom-textarea" id="description" oninput="anpassenFeld()" placeholder="Beschreibung"></textarea>
+      <input type="number" id="amount" placeholder="Betrag">
+      <button onclick="addNewRow()">Hinzufügen</button>
+    </div>
+
+    <div class="inputs flex">
+      <input id="invoiceNr" type="number" placeholder="Rechnungsummer">
+      <input class="date" type="text" id="startDate" placeholder="Von" pattern="\d{2}-\d{2}-\d{4}">
+      <span>-</span>
+      <input class="date" type="text" id="endDate" placeholder="Bis" pattern="\d{2}-\d{2}-\d{4}">
+      <input class="date" type="text" id="createDate" placeholder="Erstellt am" pattern="\d{2}-\d{2}-\d{4}">
+    </div>
+
+    <div class="center">
+      <div class="button-div">
+        <button class="button" id="downloadButton" onclick="download()" disabled>Download</button>
+      </div>
+
+      <div class="button-div">
+        <button class="button" id="deleteAllButton" toggle="modal" data-targe="#myModal"> Alles Löschen</button>
+      </div>
+    </div>
+
+
+   <!-- <footer>
+      <div class="inputs">
+        <textarea class="custom-textarea" id="description" oninput="anpassenFeld()" placeholder="Beschreibung"></textarea>
+        <input type="number" id="amount" placeholder="Betrag">
+        <button onclick="addNewRow()">Hinzufügen</button>
+      </div>
+    </footer> -->
+
+    <!-- Modal-Container -->
+    <div id="meinModal" class="modal">
+      <!-- Modal-Inhalt -->
+      <div class="modal-content">
+          <span class="close-button" onclick="schließeModal();">&times;</span>
+          <p>Sicher das Sie alle Einträge löschen wollen?</p>
+          <button onclick="schließeModal();">Schließen</button>
+          <button class="button" onclick="deleteAll();">Löschen</button>
+      </div>
+    </div>
+    <script>
+      window.onload = function() {
+          document.getElementById('downloadButton').disabled = false;
+      };
+
+      document.getElementById("deleteAllButton").onclick = function() {
+        document.getElementById("meinModal").style.display = "block";
+      };
+    </script>
+
+</body>
+</html>

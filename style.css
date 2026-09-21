@@ -1,0 +1,337 @@
+
+table {
+    margin: auto;
+    width: 80%; /* Setzt die Tabelle auf volle Breite */
+    table-layout: auto; /* Erlaubt der Tabelle, sich an den Inhalt anzupassen */
+    border-collapse: collapse; /* Für zusammenhängende Zellränder */
+}
+
+.forms-container {
+  display: flex;
+}
+
+footer {
+  margin: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: grey;
+}
+
+.flex {
+  display: flex;
+
+}
+
+#invoiceNr {
+  margin-right: 20px;
+}
+
+.date {
+  margin: 0 10px;
+}
+
+.form-group {
+  border: 2px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 50%;
+  margin: auto;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 25px;
+  box-shadow: 2px 4px rgba(0,0,0,0.4);
+  padding-bottom: 20px;
+  flex: 1;
+}
+
+
+.form-group label {
+  margin-bottom: 5px; /* Abstand zwischen Label und Input */
+}
+
+.form-group input {
+  max-width: 200px; /* Oder eine andere maximale Breite */
+  width: 100%; 
+  margin-bottom: 20px; /* Abstand zwischen Input-Paaren */
+}
+
+
+#info-btn {
+  float: right;
+}
+
+th {
+    background-color: rgb(200, 200, 200);
+    font-weight: bold;
+}
+th, td {
+    border: 1px solid black; /* Fügt einen Rand um die Zellen hinzu */
+    word-wrap: break-word; /* Ermöglicht Zeilenumbrüche innerhalb der Zellen */
+    max-width: 200px; /* Maximale Breite einer Zelle, passen Sie diese nach Bedarf an */
+    padding: 5px; /* Fügt etwas Abstand innerhalb der Zellen hinzu */
+}
+
+td {
+    white-space: pre-line;
+}
+
+.center {
+    margin: auto;
+    margin-bottom: 150px;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+hr {
+    height: 2px;
+    border: none;
+    background-color: #000;
+    margin: auto;
+    width: 80%;
+
+}
+
+.custom-textarea {
+    width: 40%; /* Breite des Textfeldes */
+    height: 10px; /* Höhe des Textfeldes */
+    padding: 8px; /* Innenabstand */
+    border: 1px solid #ccc; /* Rahmen */
+    border-radius: 4px; /* Abgerundete Ecken */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+    resize: none; /* Verhindert das Vergrößern/Verkleinern */
+    margin-right: 10px;
+}
+
+
+#amount {
+    margin-right: 20px;
+}
+
+.no-border {
+    border: none;
+    background-color: white;
+}
+
+.deleteButton {
+    font-weight: bold;
+    border-radius: 50%;   /* Macht den Button rund */
+    background-color: rgba(200, 200, 200, 0.7); /* Rote Hintergrundfarbe */
+    color: white;          /* Weißer Text */
+    border: none;          /* Kein Rand */
+    padding: 3px 6px;    /* Innenabstand */
+    font-size: 16px;       /* Schriftgröße */
+    cursor: pointer;       /* Ändert den Cursor beim Überfahren mit der Maus */
+    outline: none;         /* Entfernt den Fokus-Rand */
+    text-align: center;    /* Zentriert den Text */
+    line-height: 1;
+}
+
+.deleteButton:hover {
+    background-color: rgb(64, 64, 64); /* Dunklere Farbe beim Überfahren mit der Maus */
+}
+
+.inputs {
+    display: flex;
+    align-items: flex-start;
+    margin: auto;
+    width: 80%;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.button-div {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#deleteAllButton {
+  appearance: button;
+  background-color: rgb(167, 0, 0);
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+#deleteAllButton:after {
+  background-clip: padding-box;
+  background-color: rgb(255, 83, 83);
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+#deleteAllButton:main,
+#deleteAllButton:focus {
+  user-select: auto;
+}
+
+#deleteAllButton:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+#deleteAllButton:disabled {
+  cursor: auto;
+}
+
+#deleteAllButton:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+
+#downloadButton {
+  appearance: button;
+  background-color: green;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+#downloadButton:after {
+  background-clip: padding-box;
+  background-color: rgb(0, 208, 0);
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+#downloadButton:main,
+#downloadButton:focus {
+  user-select: auto;
+}
+
+#downloadButton:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+#downloadButton:disabled {
+  cursor: auto;
+}
+
+#downloadButton:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+
+
+/* Modal-Hintergrund */
+.modal {
+    display: none; /* Versteckt das Modal */
+    position: fixed; /* Bleibt an der Stelle */
+    z-index: 1; /* Über anderen Elementen */
+    left: 0;
+    top: 0;
+    width: 100%; /* Volle Breite */
+    height: 100%; /* Volle Höhe */
+    overflow: auto; /* Aktiviert den Scroll, falls nötig */
+    background-color: rgba(0,0,0,0.4); /* Schwarz mit Opazität */
+}
+
+/* Modal-Inhalt */
+.modal-content {
+    font-size: 20px;
+    text-align: center;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% vom oberen Rand */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* 80% der Bildschirmbreite */
+    border-radius: 0.5em;
+    box-shadow: 0 10px 20px rgba(black, 0.2);
+}
+
+/* Der Schließen-Button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
