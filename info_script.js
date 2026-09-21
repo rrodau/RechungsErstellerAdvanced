@@ -1,3 +1,11 @@
+/**
+ * Logik der Stammdaten-Seite (info.html): liest/schreibt Absender- und
+ * Empfängerdaten aus/in localStorage['infoData']. Wie in script.js gibt es
+ * keinen Server — die Daten verlassen den Browser nie von selbst.
+ */
+
+// Beim Laden der Seite einmalig aus localStorage gelesen und danach in
+// loadInfoData() genutzt, um die Formularfelder vorzubefüllen.
 var loadedInfoData = JSON.parse(localStorage.getItem('infoData')) || [];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -8,6 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function loadInfoData() {
+    /**
+     * Befüllt alle Formularfelder mit den zuletzt gespeicherten
+     * Stammdaten. Wurde noch nie gespeichert (loadedInfoData ist leer),
+     * bleiben die Felder einfach leer.
+     *
+     * Hinweis: .value setzt reinen Text/keine HTML-Interpretation, ist
+     * also unabhängig davon sicher, was zuvor im Feld gespeichert wurde.
+     */
     if (loadedInfoData.length === 0) {
         return;
     }
@@ -29,7 +45,6 @@ function loadInfoData() {
     var recieverCity = document.getElementById('recieverCity');
     var recieverAddress = document.getElementById('recieverAddress');
     infoData = loadedInfoData[0];
-    console.log(infoData)
 
     firmName.value = infoData['firmName'];
     senderFirstName.value = infoData['senderFirstName'];
@@ -51,6 +66,12 @@ function loadInfoData() {
 
 
 function saveDetails() {
+    /**
+     * Liest alle Formularfelder aus, fasst sie zu einem Objekt zusammen
+     * und überschreibt damit localStorage['infoData'] komplett (es wird
+     * immer nur ein einziger Datensatz gehalten, kein Verlauf/mehrere
+     * Profile). Wird über den "Speichern"-Button aufgerufen.
+     */
     var firmName = document.getElementById('firmName').value;
     var senderFirstName = document.getElementById('senderFirstName').value;
     var senderSurName = document.getElementById('senderSurName').value;
