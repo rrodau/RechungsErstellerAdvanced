@@ -24,12 +24,21 @@ function loadData() {
         let cell3 = newRow.insertCell(2)
         let deleteCell = newRow.insertCell(3);
 
-        cell1.innerHTML = i+1
+        cell1.innerHTML = `<span class="pos-badge">${i + 1}</span>`;
         cell2.innerHTML = loadedData[i]["description"];
         cell3.innerHTML = loadedData[i]["amount"];
-        deleteCell.innerHTML = '<button class="deleteButton no-border" onclick="deleteRow(this)">X</button>';
+        deleteCell.innerHTML = deleteButtonHTML();
         deleteCell.className = 'no-border';
     }
+}
+
+
+function deleteButtonHTML() {
+    /**
+     * Returns the markup for the round trash-icon button used to
+     * delete a single position row
+     */
+    return '<button class="deleteButton no-border" onclick="deleteRow(this)" aria-label="Position löschen" title="Position löschen"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg></button>';
 }
 
 
@@ -79,19 +88,18 @@ function addRow(description, amount) {
      */
     let table = document.getElementById("table");
     let newRow = table.insertRow(-1);
-    let posCount = table.rows.length
+    let posCount = table.rows.length - 1; // -1, da die Kopfzeile mitgezählt wird
 
     let cell1 = newRow.insertCell(0);
     let cell2 = newRow.insertCell(1);
     let cell3 = newRow.insertCell(2);
     let deleteCell = newRow.insertCell(3);
 
-    cell1.innerHTML = posCount;
+    cell1.innerHTML = `<span class="pos-badge">${posCount}</span>`;
     cell2.innerHTML = description;
     cell3.innerHTML = amount;
-    deleteCell.innerHTML = '<button class="deleteButton no-border" onclick="deleteRow(this)">X</button>';
+    deleteCell.innerHTML = deleteButtonHTML();
     deleteCell.className = 'no-border';
-    cell2.style = "max"
 }
 
 
@@ -324,7 +332,7 @@ function erstelleRechnung(daten) {
 
 function download() {
     // TODO: refactor
-    const datePattern = /^\d{2}.\d{2}.\d{4}$/;
+    const datePattern = /^\d{2}\.\d{2}\.\d{4}$/;
     let startDate = document.getElementById('startDate').value;
     let endDate = document.getElementById('endDate').value;
     let invoiceNr = document.getElementById('invoiceNr').value;
