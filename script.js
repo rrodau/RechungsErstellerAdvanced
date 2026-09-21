@@ -18,7 +18,8 @@ function loadData() {
     let table = document.getElementById("table");
     let newRow
     for (let i = 0; i < loadedData.length; i++) {
-        newRow = table.insertRow(-1);
+        // wird immer direkt vor der Eingabezeile (letzte Zeile) eingefügt
+        newRow = table.insertRow(table.rows.length - 1);
         let cell1 = newRow.insertCell(0);
         let cell2 = newRow.insertCell(1);
         let cell3 = newRow.insertCell(2)
@@ -87,8 +88,10 @@ function addRow(description, amount) {
      * 
      */
     let table = document.getElementById("table");
-    let newRow = table.insertRow(-1);
-    let posCount = table.rows.length - 1; // -1, da die Kopfzeile mitgezählt wird
+    // wird immer direkt vor der Eingabezeile (letzte Zeile) eingefügt
+    let insertIndex = table.rows.length - 1;
+    let newRow = table.insertRow(insertIndex);
+    let posCount = insertIndex; // Kopfzeile ist Zeile 0, daher entspricht der Index der neuen Position
 
     let cell1 = newRow.insertCell(0);
     let cell2 = newRow.insertCell(1);

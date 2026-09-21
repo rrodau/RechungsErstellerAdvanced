@@ -11,20 +11,24 @@
     <div class="page">
 
       <header class="app-header">
-        <div class="heading">
-          <span class="logo-badge">R</span>
-          <div>
-            <h1>Stammdaten</h1>
-            <p class="subtitle">Absender- und Empfängerdaten für die Rechnung</p>
-          </div>
+        <div>
+          <p class="eyebrow">Stammdaten</p>
+          <h1>Absender &amp; Empfänger</h1>
         </div>
+        <a href="./index.html">
+          <button class="btn btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Zurück
+          </button>
+        </a>
       </header>
 
-      <section class="card">
+      <section class="sheet">
         <div class="form-container">
 
           <div class="form-group">
-              <h2>Absender</h2>
+              <p class="sheet-label">Absender</p>
+
               <label for="firmName">Firmenname</label>
               <input type="text" id="firmName">
 
@@ -64,7 +68,8 @@
           </div>
 
           <div class="form-group">
-              <h2>Empfänger</h2>
+              <p class="sheet-label">Empfänger</p>
+
               <label for="recieverName">Name</label>
               <input type="text" id="recieverName">
 
@@ -75,26 +80,16 @@
               <input type="text" id="recieverAddress">
           </div>
         </div>
-      </section>
 
-      <div class="center">
-          <div class="button-row">
-            <div class="button-div">
-                <button class="button" onclick="saveDetails()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-                  Speichern
-                </button>
-            </div>
-            <div class="button-div">
-                <a href="./index.html">
-                    <button class="button">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                      Zurück
-                    </button>
-                </a>
-            </div>
-          </div>
-      </div>
+        <div class="sheet-divider"></div>
+
+        <div class="action-row action-row--end">
+            <button class="btn btn-primary" onclick="saveDetails()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+              Speichern
+            </button>
+        </div>
+      </section>
     </div>
 </body>
 </html>
