@@ -26,8 +26,8 @@ function loadData() {
         let deleteCell = newRow.insertCell(3);
 
         cell1.innerHTML = `<span class="pos-badge">${i + 1}</span>`;
-        cell2.innerHTML = loadedData[i]["description"];
-        cell3.innerHTML = loadedData[i]["amount"];
+        cell2.textContent = loadedData[i]["description"];
+        cell3.textContent = loadedData[i]["amount"];
         cell3.className = 'col-amount';
         deleteCell.innerHTML = deleteButtonHTML();
         deleteCell.className = 'no-border';
@@ -100,8 +100,8 @@ function addRow(description, amount) {
     let deleteCell = newRow.insertCell(3);
 
     cell1.innerHTML = `<span class="pos-badge">${posCount}</span>`;
-    cell2.innerHTML = description;
-    cell3.innerHTML = amount;
+    cell2.textContent = description;
+    cell3.textContent = amount;
     cell3.className = 'col-amount';
     deleteCell.innerHTML = deleteButtonHTML();
     deleteCell.className = 'no-border';

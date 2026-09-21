@@ -63,6 +63,29 @@
   box-sizing: border-box;
 }
 
+/* Klickjacking-Schutz: siehe frame-guard.js */
+.frame-warning {
+  display: none;
+}
+
+html[data-framed] body > *:not(.frame-warning) {
+  display: none;
+}
+
+html[data-framed] .frame-warning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+}
+
 body {
   margin: 0;
   padding: 40px 16px 80px;
