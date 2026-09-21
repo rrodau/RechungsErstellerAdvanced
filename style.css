@@ -47,7 +47,7 @@
 
   --color-accent: #2dd4bf;
   --color-accent-dark: #5eead4;
-  --color-accent-light: rgba(45, 212, 191, 0.14);
+  --color-accent-light: rgba(45, 212, 191, 0.08);
 
   --color-danger: #f87171;
   --color-danger-dark: #fca5a5;
@@ -388,6 +388,10 @@ select:focus {
 }
 
 input[type="number"] {
+  font-family: var(--font-mono);
+}
+
+#amount {
   font-family: var(--font-mono);
 }
 

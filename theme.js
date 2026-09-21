@@ -15,6 +15,13 @@
 })();
 
 
+/**
+ * Wechselt zwischen Light- und Dark-Mode und merkt sich die Wahl in
+ * localStorage['theme'], sodass sie beim nächsten Besuch (auf beiden
+ * Seiten, index.html wie info.html) automatisch wieder greift — unabhängig
+ * von der Systemeinstellung. Wird vom Sonne/Mond-Button im Header
+ * aufgerufen.
+ */
 function toggleTheme() {
     var current = document.documentElement.getAttribute('data-theme');
     var next = current === 'dark' ? 'light' : 'dark';
