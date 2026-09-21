@@ -1,337 +1,633 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
 
-table {
-    margin: auto;
-    width: 80%; /* Setzt die Tabelle auf volle Breite */
-    table-layout: auto; /* Erlaubt der Tabelle, sich an den Inhalt anzupassen */
-    border-collapse: collapse; /* Für zusammenhängende Zellränder */
+:root {
+  --color-bg: #f3f4f9;
+  --color-surface: #ffffff;
+  --color-border: #e4e7ee;
+
+  --color-primary: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-primary-light: #eef1ff;
+
+  --color-success: #17a464;
+  --color-success-dark: #128253;
+
+  --color-danger: #e11d48;
+  --color-danger-dark: #be123c;
+
+  --color-text: #1f2432;
+  --color-text-muted: #6b7280;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.06);
+  --shadow-md: 0 6px 16px rgba(17, 24, 39, 0.08);
+  --shadow-lg: 0 20px 45px rgba(17, 24, 39, 0.14);
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.forms-container {
-  display: flex;
+* {
+  box-sizing: border-box;
 }
 
-footer {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
-  left: 0;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background-color: grey;
+  padding: 32px 16px 64px;
+  background: linear-gradient(180deg, #eef0f9 0%, #f3f4f9 260px, #f3f4f9 100%);
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
 }
 
-.flex {
+/* ==========================================================================
+   Page shell
+   ========================================================================== */
+
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 28px clamp(18px, 4vw, 40px);
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.app-header {
   display: flex;
-
-}
-
-#invoiceNr {
-  margin-right: 20px;
-}
-
-.date {
-  margin: 0 10px;
-}
-
-.form-group {
-  border: 2px solid black;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  width: 50%;
-  margin: auto;
   align-items: center;
-  margin-bottom: 50px;
-  margin-top: 25px;
-  box-shadow: 2px 4px rgba(0,0,0,0.4);
-  padding-bottom: 20px;
-  flex: 1;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-
-.form-group label {
-  margin-bottom: 5px; /* Abstand zwischen Label und Input */
+.app-header .heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.form-group input {
-  max-width: 200px; /* Oder eine andere maximale Breite */
-  width: 100%; 
-  margin-bottom: 20px; /* Abstand zwischen Input-Paaren */
-}
-
-
-#info-btn {
-  float: right;
-}
-
-th {
-    background-color: rgb(200, 200, 200);
-    font-weight: bold;
-}
-th, td {
-    border: 1px solid black; /* Fügt einen Rand um die Zellen hinzu */
-    word-wrap: break-word; /* Ermöglicht Zeilenumbrüche innerhalb der Zellen */
-    max-width: 200px; /* Maximale Breite einer Zelle, passen Sie diese nach Bedarf an */
-    padding: 5px; /* Fügt etwas Abstand innerhalb der Zellen hinzu */
-}
-
-td {
-    white-space: pre-line;
-}
-
-.center {
-    margin: auto;
-    margin-bottom: 150px;
-    width: 50%;
-    padding: 10px;
-    text-align: center;
+.app-header .logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-primary), #7c3aed);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
 }
 
 h1 {
-    margin: auto;
-    width: 50%;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 40px;
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-align: left;
+  width: auto;
+  padding: 0;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+#info-btn {
+  float: none;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Section titles
+   ========================================================================== */
+
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin: 0 0 14px;
+}
+
+/* ==========================================================================
+   Table
+   ========================================================================== */
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+table {
+  margin: 0;
+  width: 100%;
+  min-width: 480px;
+  table-layout: auto;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--color-surface);
+}
+
+th {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+th,
+td {
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  word-wrap: break-word;
+  max-width: 260px;
+  padding: 12px 14px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #fafbff;
+}
+
+td {
+  white-space: pre-line;
 }
 
 hr {
-    height: 2px;
-    border: none;
-    background-color: #000;
-    margin: auto;
-    width: 80%;
-
+  display: none;
 }
 
-.custom-textarea {
-    width: 40%; /* Breite des Textfeldes */
-    height: 10px; /* Höhe des Textfeldes */
-    padding: 8px; /* Innenabstand */
-    border: 1px solid #ccc; /* Rahmen */
-    border-radius: 4px; /* Abgerundete Ecken */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
-    resize: none; /* Verhindert das Vergrößern/Verkleinern */
-    margin-right: 10px;
+/* ==========================================================================
+   Forms / inputs
+   ========================================================================== */
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
 }
 
-
-#amount {
-    margin-right: 20px;
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-text);
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
 }
 
-.no-border {
-    border: none;
-    background-color: white;
+input::placeholder,
+textarea::placeholder {
+  color: #9aa1b1;
 }
 
-.deleteButton {
-    font-weight: bold;
-    border-radius: 50%;   /* Macht den Button rund */
-    background-color: rgba(200, 200, 200, 0.7); /* Rote Hintergrundfarbe */
-    color: white;          /* Weißer Text */
-    border: none;          /* Kein Rand */
-    padding: 3px 6px;    /* Innenabstand */
-    font-size: 16px;       /* Schriftgröße */
-    cursor: pointer;       /* Ändert den Cursor beim Überfahren mit der Maus */
-    outline: none;         /* Entfernt den Fokus-Rand */
-    text-align: center;    /* Zentriert den Text */
-    line-height: 1;
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
 }
 
-.deleteButton:hover {
-    background-color: rgb(64, 64, 64); /* Dunklere Farbe beim Überfahren mit der Maus */
+.field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .inputs {
-    display: flex;
-    align-items: flex-start;
-    margin: auto;
-    width: 80%;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 50px;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  margin: 0;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.inputs .field {
+  flex: 1 1 160px;
+}
+
+.inputs .field.description-field {
+  flex: 2 1 260px;
+}
+
+.custom-textarea {
+  width: 100%;
+  height: 42px;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+  resize: none;
+  margin: 0;
+  font-family: inherit;
+}
+
+#amount {
+  margin: 0;
+}
+
+#invoiceNr {
+  margin: 0;
+}
+
+.date {
+  margin: 0;
+}
+
+.inputs.flex {
+  align-items: flex-end;
+}
+
+.date-separator {
+  padding-bottom: 10px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.no-border {
+  border: none !important;
+  background-color: transparent;
+}
+
+.deleteButton {
+  font-weight: bold;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  background-color: #f1f2f6;
+  color: var(--color-text-muted);
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.deleteButton:hover {
+  background-color: var(--color-danger);
+  color: #fff;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.center {
+  margin: 24px auto 0;
+  width: 100%;
+  padding: 0;
+  text-align: center;
 }
 
 .button-div {
-    display: inline-block;
-    margin-left: 10px;
+  display: inline-block;
 }
 
+.button,
+#downloadButton,
 #deleteAllButton {
-  appearance: button;
-  background-color: rgb(167, 0, 0);
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
+  appearance: none;
+  border: none;
+  border-radius: var(--radius-sm);
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #fff;
   cursor: pointer;
-  display: inline-block;
-  font-family: din-round,sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: .8px;
-  line-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
   margin: 0;
   outline: none;
-  overflow: visible;
-  padding: 13px 16px;
+  padding: 12px 22px;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: none;
   touch-action: manipulation;
-  transform: translateZ(0);
-  transition: filter .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
+  transition: transform 0.08s ease, box-shadow 0.15s ease, filter 0.15s ease, background-color 0.15s ease;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
+  box-shadow: var(--shadow-sm);
 }
 
-#deleteAllButton:after {
-  background-clip: padding-box;
-  background-color: rgb(255, 83, 83);
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
+.button {
+  background-color: var(--color-primary);
 }
 
-#deleteAllButton:main,
-#deleteAllButton:focus {
-  user-select: auto;
+.button:hover {
+  background-color: var(--color-primary-dark);
 }
-
-#deleteAllButton:hover:not(:disabled) {
-  filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
-}
-
-#deleteAllButton:disabled {
-  cursor: auto;
-}
-
-#deleteAllButton:active {
-  border-width: 4px 0 0;
-  background: none;
-}
-
 
 #downloadButton {
-  appearance: button;
-  background-color: green;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: din-round,sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: .8px;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  overflow: visible;
-  padding: 13px 16px;
-  text-align: center;
-  text-transform: uppercase;
-  touch-action: manipulation;
-  transform: translateZ(0);
-  transition: filter .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
+  background-color: var(--color-success);
 }
 
 #downloadButton:after {
-  background-clip: padding-box;
-  background-color: rgb(0, 208, 0);
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
-#downloadButton:main,
-#downloadButton:focus {
-  user-select: auto;
+  content: none;
 }
 
 #downloadButton:hover:not(:disabled) {
-  filter: brightness(1.1);
-  -webkit-filter: brightness(1.1);
+  background-color: var(--color-success-dark);
+  filter: none;
 }
 
-#downloadButton:disabled {
-  cursor: auto;
+#deleteAllButton {
+  background-color: var(--color-surface);
+  color: var(--color-danger);
+  border: 1px solid #f3c9d3;
+  box-shadow: none;
 }
 
-#downloadButton:active {
-  border-width: 4px 0 0;
-  background: none;
+#deleteAllButton:after {
+  content: none;
 }
 
+#deleteAllButton:hover:not(:disabled) {
+  background-color: #fdf1f3;
+  filter: none;
+}
 
+.button:hover:not(:disabled),
+#downloadButton:hover:not(:disabled),
+#deleteAllButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
 
-/* Modal-Hintergrund */
+.button:active,
+#downloadButton:active,
+#deleteAllButton:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.button:disabled,
+#downloadButton:disabled,
+#deleteAllButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.add-row-button {
+  align-self: stretch;
+  height: 42px;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   Info page: sender / receiver forms
+   ========================================================================== */
+
+.form-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  align-items: stretch;
+  box-shadow: var(--shadow-sm);
+  padding: 22px 22px 26px;
+  flex: 1 1 280px;
+}
+
+.form-group h2 {
+  margin: 0 0 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  max-width: none;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form-group input:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Modal
+   ========================================================================== */
+
 .modal {
-    display: none; /* Versteckt das Modal */
-    position: fixed; /* Bleibt an der Stelle */
-    z-index: 1; /* Über anderen Elementen */
-    left: 0;
-    top: 0;
-    width: 100%; /* Volle Breite */
-    height: 100%; /* Volle Höhe */
-    overflow: auto; /* Aktiviert den Scroll, falls nötig */
-    background-color: rgba(0,0,0,0.4); /* Schwarz mit Opazität */
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(2px);
+  animation: fade-in 0.15s ease;
 }
 
-/* Modal-Inhalt */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .modal-content {
-    font-size: 20px;
-    text-align: center;
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% vom oberen Rand */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%; /* 80% der Bildschirmbreite */
-    border-radius: 0.5em;
-    box-shadow: 0 10px 20px rgba(black, 0.2);
+  font-size: 16px;
+  text-align: center;
+  background-color: var(--color-surface);
+  margin: 15% auto;
+  padding: 28px 24px 24px;
+  border: none;
+  width: min(90%, 380px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative;
 }
 
-/* Der Schließen-Button */
+.modal-content p {
+  margin: 6px 0 22px;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.modal-content .button-row {
+  margin-top: 4px;
+}
+
+.modal-content button {
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.modal-content button.button {
+  background-color: var(--color-danger);
+  color: #fff;
+  border-color: var(--color-danger);
+}
+
+.modal-content button.button:hover {
+  background-color: var(--color-danger-dark);
+}
+
 .close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  float: none;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: var(--color-text);
+  text-decoration: none;
+  cursor: pointer;
 }
 
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 
+@media (max-width: 640px) {
+  body {
+    padding: 20px 12px 48px;
+  }
 
+  .card {
+    padding: 20px 16px;
+    border-radius: var(--radius-md);
+  }
 
+  .app-header {
+    flex-wrap: wrap;
+  }
+
+  .inputs,
+  .inputs.flex {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inputs .field,
+  .inputs .field.description-field {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .add-row-button {
+    width: 100%;
+  }
+
+  .date-separator {
+    display: none;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+
+  .button-div {
+    display: block;
+  }
+
+  .button,
+  #downloadButton,
+  #deleteAllButton {
+    width: 100%;
+  }
+
+  .modal-content {
+    margin: 30% auto;
+  }
+}

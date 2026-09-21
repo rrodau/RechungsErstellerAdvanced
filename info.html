@@ -1,77 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stammdaten – Rechnungsersteller</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="./info_script.js"></script>
     <link rel="stylesheet" type="text/css" href="./style.css">
-    <title>Document</title>
 </head>
 <body>
+    <div class="page">
 
-    <div class="form-container">
-
-    <div class="form-group">
-        <h2>Sender Daten</h2>
-        <label for="firmName">Firmenname: </label>
-        <input type="text" id="firmName">
-
-        <label for="senderFirstName">Vorname: </label>
-        <input type="text" id="senderFirstName">
-
-        <label for="senderSurName">Name: </label>
-        <input type="text" id="senderSurName">
-
-        <label for="senderAddress">Adresse: </label>
-        <input type="text" id="senderAddress">
-
-        <label for="senderPlz">Postleitzahl: </label>
-        <input type="text" id="senderPlz">
-
-        <label for="senderCity">Stadt: </label>
-        <input type="text" id="senderCity">
-
-        <label for="phone">Telefon: </label>
-        <input type="text" id="phone">
-
-        <label for="strNr">Steuernummer: </label>
-        <input type="text" id="strNr">
-
-        <label for="mwstNr">Mwst.-Iden-Nr.: </label>
-        <input type="text" id="mwstNr">
-
-        <label for="bankName">Bank: </label>
-        <input type="text" id="bankName">
-
-        <label for="iban">IBAN: </label>
-        <input type="text" id="iban">
-
-        <label for="bic">BIC: </label>
-        <input type="text" id="bic">
-    
-    </div>
-
-    <div class="form-group">
-        <h2>Empfänger Daten</h2>
-        <label for="recieverName">Name: </label>
-        <input type="text" id="recieverName">
-
-        <label for="recieverCity">Stadt: </label>
-        <input type="text" id="recieverCity">
-
-        <label for="recieverAddress">Adresse: </label>
-        <input type="text" id="recieverAddress">
-    </div>
-    </div>
-    <div class="center">
-        <div class="button-div">
-            <button class="button" class="submit" onclick="saveDetails()">Speichern</button>
+      <header class="app-header">
+        <div class="heading">
+          <span class="logo-badge">R</span>
+          <div>
+            <h1>Stammdaten</h1>
+            <p class="subtitle">Absender- und Empfängerdaten für die Rechnung</p>
+          </div>
         </div>
-        <div class="button-div">
-            <a href="./index.html">
-                <button class="button">Zurück</button>
-            </a>
+      </header>
+
+      <section class="card">
+        <div class="form-container">
+
+          <div class="form-group">
+              <h2>Absender</h2>
+              <label for="firmName">Firmenname</label>
+              <input type="text" id="firmName">
+
+              <label for="senderFirstName">Vorname</label>
+              <input type="text" id="senderFirstName">
+
+              <label for="senderSurName">Name</label>
+              <input type="text" id="senderSurName">
+
+              <label for="senderAddress">Adresse</label>
+              <input type="text" id="senderAddress">
+
+              <label for="senderPlz">Postleitzahl</label>
+              <input type="text" id="senderPlz">
+
+              <label for="senderCity">Stadt</label>
+              <input type="text" id="senderCity">
+
+              <label for="phone">Telefon</label>
+              <input type="text" id="phone">
+
+              <label for="strNr">Steuernummer</label>
+              <input type="text" id="strNr">
+
+              <label for="mwstNr">Mwst.-Iden-Nr.</label>
+              <input type="text" id="mwstNr">
+
+              <label for="bankName">Bank</label>
+              <input type="text" id="bankName">
+
+              <label for="iban">IBAN</label>
+              <input type="text" id="iban">
+
+              <label for="bic">BIC</label>
+              <input type="text" id="bic">
+
+          </div>
+
+          <div class="form-group">
+              <h2>Empfänger</h2>
+              <label for="recieverName">Name</label>
+              <input type="text" id="recieverName">
+
+              <label for="recieverCity">Stadt</label>
+              <input type="text" id="recieverCity">
+
+              <label for="recieverAddress">Adresse</label>
+              <input type="text" id="recieverAddress">
+          </div>
         </div>
+      </section>
+
+      <div class="center">
+          <div class="button-row">
+            <div class="button-div">
+                <button class="button" onclick="saveDetails()">Speichern</button>
+            </div>
+            <div class="button-div">
+                <a href="./index.html">
+                    <button class="button">Zurück</button>
+                </a>
+            </div>
+          </div>
+      </div>
     </div>
 </body>
 </html>
