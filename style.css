@@ -10,6 +10,8 @@
 
   --color-ink: #17181c;
   --color-muted: #6f7278;
+  --color-placeholder: #a9ac9f;
+  --color-row-hover: #fafaf7;
 
   --color-accent: #0f766e;
   --color-accent-dark: #0b5a54;
@@ -28,6 +30,33 @@
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #16181c;
+  --color-surface: #1e2126;
+  --color-border: #2d3138;
+  --color-border-strong: #3c414a;
+
+  --color-ink: #f1f0ea;
+  --color-muted: #9a9ea6;
+  --color-placeholder: #676c74;
+  --color-row-hover: #24272e;
+
+  --color-accent: #2dd4bf;
+  --color-accent-dark: #5eead4;
+  --color-accent-light: rgba(45, 212, 191, 0.14);
+
+  --color-danger: #f87171;
+  --color-danger-dark: #fca5a5;
+  --color-danger-light: rgba(248, 113, 113, 0.14);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+
+  color-scheme: dark;
 }
 
 * {
@@ -42,6 +71,7 @@ body {
   font-family: var(--font-sans);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 /* ==========================================================================
@@ -111,6 +141,45 @@ h1 {
   text-decoration: none;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle {
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border-strong);
+  background-color: transparent;
+  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-ink);
+  background-color: var(--color-bg);
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: inline-flex;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
 /* ==========================================================================
    Table
    ========================================================================== */
@@ -142,6 +211,9 @@ th {
 th.col-amount,
 td.col-amount {
   text-align: right;
+  width: 130px;
+  border-left: 1px solid var(--color-border);
+  padding-left: 20px;
 }
 
 td {
@@ -154,7 +226,7 @@ td {
 }
 
 tbody tr:hover:not(.input-row) {
-  background-color: #fafaf7;
+  background-color: var(--color-row-hover);
 }
 
 th.no-border,
@@ -270,7 +342,7 @@ select {
 
 input::placeholder,
 textarea::placeholder {
-  color: #a9ac9f;
+  color: var(--color-placeholder);
 }
 
 input:focus,
@@ -505,7 +577,7 @@ button {
 }
 
 .close-button {
-  color: #aaa;
+  color: var(--color-muted);
   position: absolute;
   top: 12px;
   right: 16px;
@@ -569,6 +641,15 @@ button {
 
   .btn {
     width: 100%;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-actions .btn {
+    width: auto;
   }
 
   .modal-content {

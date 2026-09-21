@@ -297,7 +297,7 @@ function erstelleRechnung(daten) {
 
         doc.text(`Steuernummer: ${infoData['strNr']}\nMwst.-Iden-Nr.: ${infoData['mwstNr']}\nInhaber: ${infoData['senderFirstName']} ${infoData['senderSurName']}`, 70, doc.internal.pageSize.height - 20);
 
-        doc.text(`${infoData['bankName']}\nIBAN: ${infoData['iban']}\nBIC: ${infoData['BIC']}`, 140, doc.internal.pageSize.height - 20);
+        doc.text(`${infoData['bankName']}\nIBAN: ${infoData['iban']}\nBIC: ${infoData['bic']}`, 140, doc.internal.pageSize.height - 20);
     }
 
     // TODO: effizienter machen
